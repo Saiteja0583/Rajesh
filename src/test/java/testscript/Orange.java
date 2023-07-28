@@ -71,6 +71,8 @@ public class Orange {
 	
 	  // click on add employee
 	 pp.addemp();
+	 
+	 Thread.sleep(3000);
 	  
 	 // DDT- Reading data from external resource- Excel
 	  for(int i = 1; i<=3; i++)
@@ -87,11 +89,19 @@ public class Orange {
 		  // click on submit details
 		  ae.getSubmit().click();
 		  
-		  // clicking on add employee list page
+		  Thread.sleep(3000);
 		  
-		  pp.addemp();
+		
 		  // clicking on employee list page
 	      pp.emplist();
+	      
+	      Thread.sleep(3000);
+	      
+	      // Searching input data
+	      
+	      emp.getSearchinput().sendKeys(first);
+	      
+	      emp.getSearchButton().click();
 	      
 	      Thread.sleep(3000);
 	      
@@ -99,26 +109,38 @@ public class Orange {
 	      
 	      JavascriptExecutor jse = (JavascriptExecutor)driver;
 	      
-	      jse.executeScript("windows.scrollTo(0,document.body.scrollHeight);", "");
+	      jse.executeScript("window.scrollTo(0,document.body.scrollHeight);", "");
 	      
 	      
+	      Thread.sleep(3000);
 	      
+	      //WebTable Element Finding
 	      
-	      ListIterator li = emp.getTable().listIterator();
-	      
-	      while(li.hasNext())
+	      for(WebElement we : emp.getTable())
 	      {
-	    	  String el = li.toString();
-	    	  
-	    	  if(el.equalsIgnoreCase(first))
-	    	  {
-	    		   System.out.println("Employee Name"+ el);
-	    	  }
+	    	    String eleText =     we.getText();
+	    	    
+	    	    if(eleText.equalsIgnoreCase(first))
+		    	  {
+		    		   System.out.println("Employee Name "+ eleText);
+		    		   break;
+		    	  }
+		    	 
 	      }
 	      
 	      
+	    
+	      Thread.sleep(3000);
+	      
+	      // click on add employee
+	      
+	      pp.addemp();
+	      
+	      Thread.sleep(3000);
+	      
+	      
 	  
-	     } 
+	     }
 	  
 	  // logout application
 	         hp.logout();

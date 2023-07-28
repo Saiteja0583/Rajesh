@@ -16,9 +16,23 @@ public class emplist {
 	
 	@FindBy(xpath="//div[@class='oxd-table-body']/div/child::div[1]/div[@class='oxd-table-cell oxd-padding-cell'][*]")
 	 private List<WebElement> table;
+	
+	@FindBy(xpath = "(//input[@placeholder='Type for hints...'])[1]")
+	private WebElement searchinput;
+	
+	@FindBy(xpath = "//button[@type='submit']")
+	private WebElement searchButton;
 
 	public List<WebElement> getTable() {
 		return table;
+	}
+
+	public WebElement getSearchinput() {
+		return searchinput;
+	}
+
+	public WebElement getSearchButton() {
+		return searchButton;
 	}
 	
 	
